@@ -1,1 +1,1 @@
-web: gunicorn my_api.wsgi
+web: gunicorn educnum.wsgi
