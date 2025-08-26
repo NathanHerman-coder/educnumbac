@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 asgiref==3.8.1
 asttokens==3.0.0
 certifi==2025.8.3
@@ -39,3 +40,21 @@ tzdata==2025.2
 urllib3==2.5.0
 wcwidth==0.2.13
 whitenoise==6.9.0
+=======
+asgiref==3.9.1
+gunicorn==23.0.0
+Django==5.2.5
+django-cors-headers==4.7.0
+djangorestframework==3.16.1
+djangorestframework_simplejwt==5.5.1
+PyJWT==2.10.1
+sqlparse==0.5.3
+tzdata==2025.2
+
+# Pour gérer les fichiers statiques en production
+whitenoise==7.1.0
+
+# Pour PostgreSQL si tu l'utilises
+dj-database-url==1.0.0
+psycopg2-binary==2.9.9
+>>>>>>> 253d1ccbec652f551412448955ee9101dac63851
