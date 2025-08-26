@@ -11,6 +11,7 @@ django-extensions==4.1
 djangorestframework==3.16.0
 djangorestframework_simplejwt==5.5.1
 executing==2.2.0
+gunicorn==23.0.0
 httpie==3.2.4
 idna==3.10
 ipython==9.1.0
@@ -20,6 +21,7 @@ markdown-it-py==4.0.0
 matplotlib-inline==0.1.7
 mdurl==0.1.2
 multidict==6.6.4
+packaging==25.0
 parso==0.8.4
 pillow==11.2.1
 prompt_toolkit==3.0.51
