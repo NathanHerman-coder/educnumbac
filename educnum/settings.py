@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-s19%3$#s$2+)2d$6#kbtr9fd-6n3h0e06@s92hj)a1!(@!su)_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [*]
+ALLOWED_HOSTS = ["https://educnumbac.onrender.com", "https://educnum.netlify.app"]
 
 
 # Application definition
