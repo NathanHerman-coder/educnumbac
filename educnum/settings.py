@@ -29,6 +29,18 @@ ALLOWED_HOSTS = ["https://educnumbac.onrender.com", "https://educnum.netlify.app
 
 
 # Application definition
+import os
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': os.environ.get('DB_HOST'),
+        'PORT': os.environ.get('DB_PORT', '5432'),
+    }
+}
 
 INSTALLED_APPS = [
     'django.contrib.admin',
