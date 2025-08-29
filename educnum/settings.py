@@ -61,7 +61,7 @@ REST_FRAMEWORK = {
     )
 }
 ROOT_URLCONF = 'educnum.urls'
-ALLOWED_HOSTS = ["mon-api.com", "127.0.0.1", "localhost"]
+ALLOWED_HOSTS = ["mon-api.com", "127.0.0.1", "localhost","educnumbac.onrender.com"]
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
