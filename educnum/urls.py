@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from courses.views import CourseListCreate, EnrollmentCreate
-from payements.views import PaymentListCreate
+from payments.views import PaymentListCreate
 
 urlpatterns = [
     path('admin/', admin.site.urls),
