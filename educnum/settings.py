@@ -25,22 +25,11 @@ SECRET_KEY = 'django-insecure-s19%3$#s$2+)2d$6#kbtr9fd-6n3h0e06@s92hj)a1!(@!su)_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["https://educnumbac.onrender.com", "https://educnum.netlify.app"]
+ALLOWED_HOSTS = ["https://educnumbac.onrender.com", "https://educnum.netlify.app","localhost"]
 
 
 # Application definition
 import os
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('DB_NAME'),
-        'USER': os.environ.get('DB_USER'),
-        'PASSWORD': os.environ.get('DB_PASSWORD'),
-        'HOST': os.environ.get('DB_HOST'),
-        'PORT': os.environ.get('DB_PORT', '5432'),
-    }
-}
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -54,6 +43,8 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'courses',
     'payments',
+    'quiz',
+    'auth_app',
 ]
 
 MIDDLEWARE = [
@@ -70,7 +61,10 @@ MIDDLEWARE = [
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-    )
+    ), 
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
 }
 ROOT_URLCONF = 'educnum.urls'
 ALLOWED_HOSTS = ["mon-api.com", "127.0.0.1", "localhost","educnumbac.onrender.com"]
@@ -79,7 +73,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "https://educnum.netlify.app",
 ]
-CORS_ALLOW_ALL_ORIGINS = False
+CORS_ALLOW_ALL_ORIGINS = True
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -101,12 +95,31 @@ WSGI_APPLICATION = 'educnum.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+# Configuration PostgreSQL pour la production
 DATABASES = {
     'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': os.environ.get('DB_HOST'),
+        'PORT': os.environ.get('DB_PORT', '5432'),
+    },
+    'sqlite': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# Fallback vers SQLite si les variables d'environnement ne sont pas définies
+if not all([os.environ.get('DB_NAME'), os.environ.get('DB_USER'), 
+            os.environ.get('DB_PASSWORD'), os.environ.get('DB_HOST')]):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 
 # Password validation

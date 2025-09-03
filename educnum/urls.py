@@ -17,4 +17,5 @@ urlpatterns = [
 
     # Payments
     path('api/payments/', PaymentListCreate.as_view(), name="payments"),
+    path('api/', include('quiz.urls')), 
 ]

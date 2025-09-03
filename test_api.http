@@ -1,0 +1,29 @@
+### 1. Inscription d'un utilisateur
+POST http://127.0.0.1:8000/api/accounts/register/
+Content-Type: application/json
+
+{
+  "username": "nathan",
+  "password": "monmotdepasse"
+}
+
+### 2. Connexion pour obtenir le JWT
+POST http://127.0.0.1:8000/api/token/
+Content-Type: application/json
+
+{
+  "username": "nathan",
+  "password": "monmotdepasse"
+}
+
+### 3. Rafraîchir le token
+POST http://127.0.0.1:8000/api/token/refresh/
+Content-Type: application/json
+
+{
+  "refresh": "colle_ici_le_refresh_token"
+}
+
+### 4. Endpoint protégé (exemple : liste des cours)
+GET http://127.0.0.1:8000/api/courses/
+Authorization: Bearer {{access_token}}
